@@ -2,6 +2,10 @@
 
 [문제 링크](https://www.acmicpc.net/problem/11720) 
 
+## 아하!
+- Char -> Integer 변환: Character.getNumericValue()
+- 
+
 ### 성능 요약
 
 메모리: 17744 KB, 시간: 208 ms
@@ -25,4 +29,3 @@
 ### 출력 
 
  <p>입력으로 주어진 숫자 N개의 합을 출력한다.</p>
-
