@@ -2,6 +2,10 @@
 
 [문제 링크](https://www.acmicpc.net/problem/1343) 
 
+## 아하!
+string 메소드 중
+- contains()
+- replace()
 ### 성능 요약
 
 메모리: 17544 KB, 시간: 196 ms
