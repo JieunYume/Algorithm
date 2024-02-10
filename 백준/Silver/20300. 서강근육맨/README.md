@@ -9,6 +9,8 @@
 #### 2. List 정렬
 - Collections.sort(muscle_loss_values);
 - 기본은 오름차순이다
+#### 3. max 값 구하는 메소드
+- Math.max(value, max);
 
 ### 풀이
 - 홀수와 짝수의 경우로 나눈다.
