@@ -3,20 +3,18 @@ import java.util.Scanner
 fun main(args: Array<String>) {
     val sc = Scanner(System.`in`)
     val n = sc.nextInt()
-    var result = ""
+    val result = StringBuilder()
 
-    for (i in 1..n) {
+    repeat(n) {
         val r = sc.nextInt()
         val s = sc.next()
-        var repeat = ""
+        val repeat = StringBuilder()
 
-        s.forEach {
-            for (j in 1..r) {
-                repeat += it
-            }
+        s.forEach { c ->
+            repeat(r) { repeat.append(c) }
         }
-        result += repeat+"\n"
+        result.append(repeat)
+        result.append("\n")
     }
     print(result)
-
 }
