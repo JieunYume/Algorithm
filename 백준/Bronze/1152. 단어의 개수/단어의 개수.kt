@@ -1,8 +1,7 @@
 import java.util.Scanner
 
 fun main(args: Array<String>) {
-    val sc = Scanner(System.`in`)
-    val s = sc.nextLine().trim()
+    val s = readln().trim()
     var size = 0
 
     if (s.equals("")) {
