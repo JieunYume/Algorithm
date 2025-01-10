@@ -2,14 +2,12 @@ import java.util.Scanner
 
 fun main(args: Array<String>) {
     val sc = Scanner(System.`in`)
-    val s = sc.nextLine()
+    val s = sc.nextLine().trim()
     var size = 0
 
-    val words  = s.split(" ")
-    words.forEach{ w ->
-        if (w != "") {
-            size++
-        }
+    if (s.equals("")) {
+        print(size)
+    } else{
+        println(s.split(" ").size)
     }
-    println(size)
 }
