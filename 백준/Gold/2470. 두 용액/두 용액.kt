@@ -1,21 +1,25 @@
+import java.io.BufferedReader
+import java.io.InputStreamReader
 import java.util.*
 
 fun main(args: Array<String>) {
-    val scanner = Scanner(System.`in`)
-
-    val n = scanner.nextInt()
+    val br = BufferedReader(InputStreamReader(System.`in`))
+    
+    val n = br.readLine().toInt()
 
     val solutionValues = IntArray(n)
-    val result = IntArray(2)
+    val token = StringTokenizer(br.readLine())
     for (i in 0 until n) {
-        solutionValues[i] = scanner.nextInt()
+        solutionValues[i] = token.nextToken().toInt()
     }
+    
     // 정렬한다.
     solutionValues.sort()
 
     var left = 0
     var right = n-1
-    var min = Int.MAX_VALUE // 여기 고침
+    var min = Int.MAX_VALUE
+    val result = IntArray(2)
 
     while (left < right) {
         val sum = solutionValues[left] + solutionValues[right]
@@ -35,5 +39,4 @@ fun main(args: Array<String>) {
     }
 
     println("${result[0]} ${result[1]}")
-
 }
