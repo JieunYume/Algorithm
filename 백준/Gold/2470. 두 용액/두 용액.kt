@@ -15,9 +15,7 @@ fun main(args: Array<String>) {
 
     var left = 0
     var right = n-1
-    var min = Math.abs(solutionValues[left] + solutionValues[right])
-    result[0] = solutionValues[left]
-    result[1] = solutionValues[right]
+    var min = Int.MAX_VALUE // 여기 고침
 
     while (left < right) {
         val sum = solutionValues[left] + solutionValues[right]
