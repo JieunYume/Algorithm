@@ -33,11 +33,13 @@ fun main() = with(StreamTokenizer(System.`in`.bufferedReader())) {
 //        println()
 //    }
 
-    println(dfsWithStack(graph, v))
-    println(bfsWithQueue(graph, v))
+    val visited = BooleanArray(graph.size){false}
+    dfsWithRecursion(graph, v, visited)
+    println()
+    bfsWithQueue(graph, v)
 }
 
-fun dfsWithStack(graph: Array<IntArray>, v: Int): String {
+fun dfsWithStack(graph: Array<IntArray>, v: Int) {
     val stack = Stack<Int>()
     val visited = BooleanArray(graph.size){false}
     var result = ""
@@ -58,10 +60,21 @@ fun dfsWithStack(graph: Array<IntArray>, v: Int): String {
             }
         }
     }
-    return result
+    println(result)
 }
 
-fun bfsWithQueue(graph: Array<IntArray>, v: Int): String {
+fun dfsWithRecursion(graph: Array<IntArray>, v: Int, visited: BooleanArray) {
+    visited[v] = true
+    print("$v ")
+
+    for (i in 1 until graph.size) {
+        if (graph[v][i] == 1 && !visited[i]) {
+            dfsWithRecursion(graph, i, visited)
+        }
+    }
+}
+
+fun bfsWithQueue(graph: Array<IntArray>, v: Int) {
     val queue = ArrayDeque<Int>()
     val visited = BooleanArray(graph.size)
     var result = ""
@@ -81,9 +94,5 @@ fun bfsWithQueue(graph: Array<IntArray>, v: Int): String {
         }
     }
 
-    return result
-}
-
-fun dfsWithRecursion() {
-
+    println(result)
 }
