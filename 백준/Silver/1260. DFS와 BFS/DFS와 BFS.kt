@@ -1,22 +1,27 @@
 import java.io.BufferedReader
 import java.io.InputStreamReader
+import java.io.StreamTokenizer
 import java.util.*
 import kotlin.collections.ArrayDeque
 
 
-fun main(args: Array<String>) {
-    val br = BufferedReader(InputStreamReader(System.`in`))
-    var st = StringTokenizer(br.readLine())
-    val n = st.nextToken().toInt()
-    val m = st.nextToken().toInt()
-    val v = st.nextToken().toInt()
+fun main() = with(StreamTokenizer(System.`in`.bufferedReader())) {
+    fun nextInt(): Int {
+        nextToken()
+        return nval.toInt() // nval: 토큰이 숫자라면 그 숫자의 값을 나타낸다.
+    }
+    val n = nextInt()
+    val m = nextInt()
+    val v = nextInt()
 
-    val graph = Array(n+1, {IntArray(n+1, {0})})
+    val graph = Array(n+1) {
+        IntArray(n+1)
+    }
 
     for (i in 0 until m) {
-        st = StringTokenizer(br.readLine())
-        val a = st.nextToken().toInt()
-        val b = st.nextToken().toInt()
+        val a = nextInt()
+        val b = nextInt()
+
         graph[a][b] = 1
         graph[b][a] = 1
     }
@@ -27,6 +32,7 @@ fun main(args: Array<String>) {
 //        }
 //        println()
 //    }
+
     println(dfsWithStack(graph, v))
     println(bfsWithQueue(graph, v))
 }
@@ -61,10 +67,10 @@ fun bfsWithQueue(graph: Array<IntArray>, v: Int): String {
     var result = ""
 
     queue.add(v)
+    visited[v] = true
 
     while (queue.isNotEmpty()) {
         val currentNode = queue.removeFirst()
-        visited[currentNode] = true
         result += "$currentNode "
 
         for (i in 1 until graph.size) {
