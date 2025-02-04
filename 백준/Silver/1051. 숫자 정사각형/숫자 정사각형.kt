@@ -17,71 +17,57 @@ fun main() {
     for (i in 0 until n) {
         for (j in 0 until m) {
             // 오른쪽아래 방향
-            var checkI = i+1
-            var checkJ = j+1
+            var diagonalI = i+1
+            var diagonalJ = j+1
             val target = numbers[i][j]
-            while (checkI < n && checkJ < m) {
-                if (numbers[checkI][checkJ] == target) {
-                    val dx = abs(i-checkI)
-                    if (numbers[i + dx][j] == target) {
-                        if (numbers[i][j + dx] == target) {
-                            squreSizes[i][j] = dx+1
-                        }
-                    }
+            while (diagonalI < n && diagonalJ < m) {
+                if (numbers[diagonalI][diagonalJ] == target) {
+                    val dx = abs(i - diagonalI)
+                    if (numbers[i + dx][j] == target
+                        && numbers[i][j + dx] == target
+                    ) squreSizes[i][j] = dx + 1
                 }
-                checkI++
-                checkJ++
+                diagonalI++; diagonalJ++
             }
 
             // 왼쪽위 방향
-            checkI = i-1
-            checkJ = j-1
-            while (checkI >= 0 && checkJ >= 0) {
-                if (numbers[checkI][checkJ] == target) {
-                    val dx = abs(i-checkI)
-                    if (numbers[i - dx][j] == target) {
-                        if (numbers[i][j - dx] == target) {
-                            squreSizes[i][j] = dx+1
-                        }
-                    }
+            diagonalI = i-1
+            diagonalJ = j-1
+            while (diagonalI >= 0 && diagonalJ >= 0) {
+                if (numbers[diagonalI][diagonalJ] == target) {
+                    val dx = abs(i - diagonalI)
+                    if (numbers[i - dx][j] == target
+                        && numbers[i][j - dx] == target
+                    ) squreSizes[i][j] = dx + 1
                 }
-                checkI--
-                checkJ--
+                diagonalI--; diagonalJ--
             }
 
             // 오른쪽위 방향
-            checkI = i-1
-            checkJ = j+1
-            while (checkI >= 0 && checkJ < m) {
-                if (numbers[checkI][checkJ] == target) {
-                    val dx = abs(i - checkI)
-                    if (numbers[i - dx][j] == target) {
-                        if (numbers[i][j + dx] == target) {
-                            squreSizes[i][j] = dx + 1
-                        }
-                    }
+            diagonalI = i-1
+            diagonalJ = j+1
+            while (diagonalI >= 0 && diagonalJ < m) {
+                if (numbers[diagonalI][diagonalJ] == target) {
+                    val dx = abs(i - diagonalI)
+                    if (numbers[i - dx][j] == target
+                        && numbers[i][j + dx] == target
+                    ) squreSizes[i][j] = dx + 1
                 }
-                checkI--
-                checkJ++
+                diagonalI--; diagonalJ++
             }
 
             // 왼쪽아래 방향
-            checkI = i+1
-            checkJ = j-1
-            while (checkI < n && checkJ >= 0) {
-                if (numbers[checkI][checkJ] == target) {
-                    val dx = abs(i - checkI)
-                    if (numbers[i + dx][j] == target) {
-                        if (numbers[i][j - dx] == target) {
-                            squreSizes[i][j] = dx + 1
-                        }
-                    }
+            diagonalI = i+1
+            diagonalJ = j-1
+            while (diagonalI < n && diagonalJ >= 0) {
+                if (numbers[diagonalI][diagonalJ] == target) {
+                    val dx = abs(i - diagonalI)
+                    if (numbers[i + dx][j] == target
+                        && numbers[i][j - dx] == target
+                    ) squreSizes[i][j] = dx + 1
                 }
-                checkI++
-                checkJ--
+                diagonalI++; diagonalJ--
             }
-
-
         }
     }
 
